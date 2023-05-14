@@ -14,10 +14,6 @@ cd vue-fastapi
 npm dev run
 ```
 
-It appears there are two options for running development servers:
-- Using a docker(with docker-compose)
-- Running development servers separately in a local environment
-
 ## Configurations
 You need to make sure the configurations are properly set for both FastAPI and Vue.js.
 Depending on your setup, port numbers may change, os make sure to adjust them accordingly.
@@ -33,8 +29,15 @@ allowed_origins = [
 You should also set `allow_methods` and `allow_headers` appropriately.
 However, there's no need to modify them for this project.
 
+- Firebase authentication
+
+You need to store the credentials for firebase into `vue-fastapi/firebase_credentials.json`.
+You can get this credential from the firebase console.
+![firebase_cred](doc/firebase_cred_screen.png)
+
+
 ### Vue
-- Back address: Make sure the backend address is configured correctly.
+- Backend address: Make sure the backend address is configured correctly.
 ```javascript
 // vue-fastapi/src/plugins/axios.js:6
 export default {
@@ -45,6 +48,22 @@ export default {
     }
     ...
 }
+```
+
+- Firebase authentication
+
+The following variables shall be configured properly and stored in `vue-fastapi/.env.local`.
+Please refer to the firebase console and fill them.
+This file is not contained in this repo, so make sure to it will be generated.
+
+```.env
+VITE_apiKey=****,
+VITE_authDomain=****,
+VITE_projectId=***,
+VITE_storageBucket=****,
+VITE_messagingSenderId=****,
+VITE_appId=****,
+VITE_measurementId=****"
 ```
 
 
