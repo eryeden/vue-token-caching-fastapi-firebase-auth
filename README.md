@@ -52,25 +52,26 @@ export default {
 - python 3.11
 - poetry
 
+### Python packages
+```bash
+poetry add fastapi[all] firebase_admin urllib3==1.26.15
+```
+
+### Node.js packages
+```bash
+cd vue-fastapi/
+npm install axios vue-axios firebaseui firebase-tools
+npm install
+```
+
+
 ## Project memo
 
 - Virtual environment set up
 ```bash
 pyenv local 3.11.3
 python -m venv .venv
-poetry init
+poetry install
 poetry shell
 ```
 
-- FastAPI set up
-```bash
-poetry add fastapi[all]
-```
-
-- Vue3+Vite set up
-```bash
-npm init vue@latest
-cd vue-fastapi/
-npm install axios vue-axios
-npm install
-```
