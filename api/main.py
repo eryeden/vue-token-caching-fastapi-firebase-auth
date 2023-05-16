@@ -80,3 +80,21 @@ async def hello():
 async def user(user_info=Depends(get_user)):
     return {"message": "User",
             "user_info": user_info}
+
+
+@app.get("/revoke_token")
+async def revoke_token(user_info=Depends(get_user)):
+    # get the user id
+    print(type(user_info))
+    print(user_info)
+    uid = user_info["uid"]
+
+    # revoke the user token
+    # Revoke tokens on the backend.
+    auth.revoke_refresh_tokens(uid)
+    user = auth.get_user(uid)
+    # Convert to seconds as the auth_time in the token claims is in seconds.
+    revocation_second = user.tokens_valid_after_timestamp / 1000
+    print('Tokens revoked at: {0}'.format(revocation_second))
+
+    return {"message": "UID:{} token revoked at {}".format(uid, revocation_second)}
