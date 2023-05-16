@@ -1,4 +1,13 @@
-# vue-fastapi
+# vue-token-caching-fastapi-firebase-auth
+
+This repository is intended to implement the following features:
+- Retrieve a Firebase auth token
+- Caching a token in the frontend
+- Automatically refresh a cached token
+
+From the API reference of [`getIdToken`](https://firebase.google.com/docs/reference/js/v8/firebase.User#getidtoken), 
+you don't need to do anything with the things mentioned above.
+All features are automatically done in the Firebase tools library.
 
 
 ## Demo
